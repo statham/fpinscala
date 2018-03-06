@@ -117,4 +117,10 @@ object List { // `List` companion object. Contains functions for creating and wo
 
   def doubleToString(l: List[Double]): List[String] =
     foldRight(l, Nil:List[String])((h, t) => Cons(h.toString, t))
+
+  def filter[A](l: List[A])(f: A => Boolean): List[A] =
+    foldRight(l, Nil:List[A])((h, t) => {
+      if (f(h)) Cons(h, t)
+      else t
+    })
 }
