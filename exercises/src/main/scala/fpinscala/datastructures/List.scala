@@ -123,4 +123,7 @@ object List { // `List` companion object. Contains functions for creating and wo
       if (f(h)) Cons(h, t)
       else t
     })
+
+  def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
+    concat(map(as)(f))
 }
