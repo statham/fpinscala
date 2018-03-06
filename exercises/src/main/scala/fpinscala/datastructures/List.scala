@@ -110,9 +110,7 @@ object List { // `List` companion object. Contains functions for creating and wo
   def concat[A](l: List[List[A]]): List[A] = {
     foldRight(l, List[A]())((h, t) => append(h, t))
   }
-  def foldRight[A,B](as: List[A], z: B)(f: (A, B) => B): B = // Utility functions
-    as match {
-      case Nil => z
-      case Cons(x, xs) => f(x, foldRight(xs, z)(f))
-    }
+
+  def addOne(l: List[Int]): List[Int] =
+    foldRight(l, List[Int]())((h, t) => Cons(h+1, t))
 }
